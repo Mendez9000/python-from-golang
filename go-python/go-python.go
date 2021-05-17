@@ -1,11 +1,9 @@
 package main
 
-//https://github.com/sbinet/go-python
 import (
 	"fmt"
-	"log"
-
 	"github.com/sbinet/go-python"
+	"log"
 )
 
 func init() {
@@ -15,11 +13,15 @@ func init() {
 	}
 }
 
+// Posiblemente sea necesario establecer PYTHONPATH:
+// un a forma es ejecutarlo desde dentro de la carpeta que contiene este archivo:
+// export PYTHONPATH=./
+
 func main() {
 	fmt.Printf("importing ...\n")
 	m := python.PyImport_ImportModule("go-python")
 	if m == nil {
-		log.Fatalf("could not import 'kwargs'\n")
+		log.Fatalf("could not import 'modoe'. Use command export PYTHONPATH=./\n")
 	}
 
 	foo := m.GetAttrString("foo")
